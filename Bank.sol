@@ -49,13 +49,6 @@ contract Bank {
         assert(totalBalance == address(this).balance);
     }
 
-    function checkInvariant() public view onlyOwner {
-        uint256 calculatedTotalBalance = 0;
-        for (uint256 i = 0; i < depositors.length; i++) {
-            calculatedTotalBalance += balances[depositors[i]];
-        }
-        assert(calculatedTotalBalance == totalBalance);
-    }
 
     function unsafeFunction() public pure {
         revert("This function is unsafe and should not be called");
